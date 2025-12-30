@@ -10,7 +10,7 @@ export class UsersService {
   constructor(
     private _usersRepository: UsersRepository,
     private _organizationRepository: OrganizationRepository
-  ) {}
+  ) { }
 
   getUserByEmail(email: string) {
     return this._usersRepository.getUserByEmail(email);
@@ -28,12 +28,28 @@ export class UsersService {
     return this._usersRepository.getUserByProvider(providerId, provider);
   }
 
+  getUserByEmailAnyProvider(email: string) {
+    return this._usersRepository.getUserByEmailAnyProvider(email);
+  }
+
   activateUser(id: string) {
     return this._usersRepository.activateUser(id);
   }
 
   updatePassword(id: string, password: string) {
     return this._usersRepository.updatePassword(id, password);
+  }
+
+  setPassword(id: string, password: string) {
+    return this._usersRepository.setPassword(id, password);
+  }
+
+  setPasswordHash(id: string, passwordHash: string) {
+    return this._usersRepository.setPasswordHash(id, passwordHash);
+  }
+
+  changeAudienceSize(userId: string, audience: number) {
+    return this._usersRepository.changeAudienceSize(userId, audience);
   }
 
   getPersonal(userId: string) {
